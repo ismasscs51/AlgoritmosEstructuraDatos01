@@ -1,3 +1,0 @@
-C:\Users\sebas\source\repos\Trabajo_Final\Trabajo_Final\x64\Debug\Trabajo_Final.vcxproj.AssemblyReference.cache
-C:\Users\sebas\source\repos\Trabajo_Final\Trabajo_Final\x64\Debug\TrabajoFinal.MyForm.resources
-C:\Users\sebas\source\repos\Trabajo_Final\Trabajo_Final\x64\Debug\Trabajo_Final.vcxproj.GenerateResource.cache
