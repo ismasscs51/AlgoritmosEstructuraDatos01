@@ -56,7 +56,7 @@ namespace TrabajoFinalv1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(168, 51);
+			this->label1->Location = System::Drawing::Point(221, 51);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(61, 16);
 			this->label1->TabIndex = 0;
@@ -66,7 +66,7 @@ namespace TrabajoFinalv1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(406, 364);
+			this->ClientSize = System::Drawing::Size(503, 564);
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
