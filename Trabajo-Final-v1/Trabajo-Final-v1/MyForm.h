@@ -11,6 +11,7 @@ namespace TrabajoFinalv1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
 
 	/// <summary>
 	/// Resumen de MyForm
@@ -103,21 +104,21 @@ namespace TrabajoFinalv1 {
 			this->buttonCrearcuenta = (gcnew System::Windows::Forms::Button());
 			this->Tituloinicial = (gcnew System::Windows::Forms::Label());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->buttonVolverlogin = (gcnew System::Windows::Forms::Button());
 			this->buttonIngresarLogin = (gcnew System::Windows::Forms::Button());
 			this->textBoxClaveLogin = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxCorreologin = (gcnew System::Windows::Forms::TextBox());
 			this->panelRegistro = (gcnew System::Windows::Forms::Panel());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->buttonVolverRegistro = (gcnew System::Windows::Forms::Button());
 			this->buttonRegistrarCuenta = (gcnew System::Windows::Forms::Button());
 			this->textBoxClaveRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxCorreoRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxNombreRegistro = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->panelInicio->SuspendLayout();
 			this->panelLogin->SuspendLayout();
 			this->panelRegistro->SuspendLayout();
@@ -179,13 +180,31 @@ namespace TrabajoFinalv1 {
 			this->panelLogin->Size = System::Drawing::Size(479, 540);
 			this->panelLogin->TabIndex = 3;
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(86, 199);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(82, 16);
+			this->label5->TabIndex = 6;
+			this->label5->Text = L"Contraseña: ";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(114, 142);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(54, 16);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"Correo: ";
+			// 
 			// buttonVolverlogin
 			// 
 			this->buttonVolverlogin->Location = System::Drawing::Point(201, 307);
 			this->buttonVolverlogin->Name = L"buttonVolverlogin";
 			this->buttonVolverlogin->Size = System::Drawing::Size(84, 23);
 			this->buttonVolverlogin->TabIndex = 3;
-			this->buttonVolverlogin->Text = L"button1";
+			this->buttonVolverlogin->Text = L"volver";
 			this->buttonVolverlogin->UseVisualStyleBackColor = true;
 			this->buttonVolverlogin->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverlogin_Click);
 			// 
@@ -197,6 +216,7 @@ namespace TrabajoFinalv1 {
 			this->buttonIngresarLogin->TabIndex = 2;
 			this->buttonIngresarLogin->Text = L"Ingresar";
 			this->buttonIngresarLogin->UseVisualStyleBackColor = true;
+			this->buttonIngresarLogin->Click += gcnew System::EventHandler(this, &MyForm::buttonIngresarLogin_Click);
 			// 
 			// textBoxClaveLogin
 			// 
@@ -228,24 +248,52 @@ namespace TrabajoFinalv1 {
 			this->panelRegistro->Size = System::Drawing::Size(479, 540);
 			this->panelRegistro->TabIndex = 4;
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(92, 212);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(82, 16);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Contraseña: ";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(120, 170);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(54, 16);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Correo: ";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(114, 129);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(60, 16);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Usuario: ";
+			// 
 			// buttonVolverRegistro
 			// 
 			this->buttonVolverRegistro->Location = System::Drawing::Point(210, 293);
 			this->buttonVolverRegistro->Name = L"buttonVolverRegistro";
 			this->buttonVolverRegistro->Size = System::Drawing::Size(75, 23);
 			this->buttonVolverRegistro->TabIndex = 4;
-			this->buttonVolverRegistro->Text = L"button2";
+			this->buttonVolverRegistro->Text = L"volver";
 			this->buttonVolverRegistro->UseVisualStyleBackColor = true;
 			this->buttonVolverRegistro->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverRegistro_Click);
 			// 
 			// buttonRegistrarCuenta
 			// 
-			this->buttonRegistrarCuenta->Location = System::Drawing::Point(210, 259);
+			this->buttonRegistrarCuenta->Location = System::Drawing::Point(199, 264);
 			this->buttonRegistrarCuenta->Name = L"buttonRegistrarCuenta";
-			this->buttonRegistrarCuenta->Size = System::Drawing::Size(75, 23);
+			this->buttonRegistrarCuenta->Size = System::Drawing::Size(95, 23);
 			this->buttonRegistrarCuenta->TabIndex = 3;
-			this->buttonRegistrarCuenta->Text = L"button1";
+			this->buttonRegistrarCuenta->Text = L"Registrarse";
 			this->buttonRegistrarCuenta->UseVisualStyleBackColor = true;
+			this->buttonRegistrarCuenta->Click += gcnew System::EventHandler(this, &MyForm::buttonRegistrarCuenta_Click);
 			// 
 			// textBoxClaveRegistro
 			// 
@@ -268,51 +316,6 @@ namespace TrabajoFinalv1 {
 			this->textBoxNombreRegistro->Name = L"textBoxNombreRegistro";
 			this->textBoxNombreRegistro->Size = System::Drawing::Size(152, 22);
 			this->textBoxNombreRegistro->TabIndex = 0;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(114, 129);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(60, 16);
-			this->label1->TabIndex = 5;
-			this->label1->Text = L"Usuario: ";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(120, 170);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(54, 16);
-			this->label2->TabIndex = 6;
-			this->label2->Text = L"Correo: ";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(92, 212);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(82, 16);
-			this->label3->TabIndex = 7;
-			this->label3->Text = L"Contraseña: ";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(114, 142);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(54, 16);
-			this->label4->TabIndex = 5;
-			this->label4->Text = L"Correo: ";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(86, 199);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(82, 16);
-			this->label5->TabIndex = 6;
-			this->label5->Text = L"Contraseña: ";
 			// 
 			// MyForm
 			// 
@@ -345,6 +348,51 @@ private: System::Void buttonVolverRegistro_Click(System::Object^ sender, System:
 }
 private: System::Void buttonVolverlogin_Click(System::Object^ sender, System::EventArgs^ e) {
 	mostrarInicio();
+}
+private: System::Void buttonIngresarLogin_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	string correo = msclr::interop::marshal_as<string>(textBoxCorreologin->Text);
+	string clave = msclr::interop::marshal_as<string>(textBoxClaveLogin->Text);
+
+	bool logincorrecto = sistema->iniciarSesion(correo, clave);
+
+	if (logincorrecto) {
+		Usuario* usuario = sistema->getUsuarioActual();
+		string datos = usuario->mostrarDatos();
+
+		MessageBox::Show(gcnew String(datos.c_str()), "Bienvenido");
+	}
+	else {
+		MessageBox::Show("Correo o contraseña incorrectos.");
+	}
+}
+private: System::Void buttonRegistrarCuenta_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	string nombre = msclr::interop::marshal_as<string>(textBoxNombreRegistro->Text);
+	string correo = msclr::interop::marshal_as<string>(textBoxCorreoRegistro->Text);
+	string clave = msclr::interop::marshal_as<string>(textBoxClaveRegistro->Text);
+
+	if (nombre == "" || correo == "" || clave == "") {
+		MessageBox::Show("Debe completar todos los campos.");
+		return;
+
+	}
+
+	bool registrado = sistema->registrarUsuario(nombre, correo, clave);
+
+	if (registrado) {
+		MessageBox::Show("Cuenta creada correctamente");
+
+		textBoxNombreRegistro->Clear();
+		textBoxCorreoRegistro->Clear();
+		textBoxClaveRegistro->Clear();
+
+		mostrarLogin();
+	}
+	else {
+		MessageBox::Show("No se pudo registrar, El correo ya existe");
+	}
+
 }
 };
 }
