@@ -81,6 +81,11 @@ namespace TrabajoFinalv1 {
 	private: System::Windows::Forms::TextBox^ textBoxClaveRegistro;
 	private: System::Windows::Forms::TextBox^ textBoxCorreoRegistro;
 	private: System::Windows::Forms::TextBox^ textBoxNombreRegistro;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label4;
 
 
 		/// </summary>
@@ -98,16 +103,21 @@ namespace TrabajoFinalv1 {
 			this->buttonCrearcuenta = (gcnew System::Windows::Forms::Button());
 			this->Tituloinicial = (gcnew System::Windows::Forms::Label());
 			this->panelLogin = (gcnew System::Windows::Forms::Panel());
+			this->buttonVolverlogin = (gcnew System::Windows::Forms::Button());
+			this->buttonIngresarLogin = (gcnew System::Windows::Forms::Button());
+			this->textBoxClaveLogin = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxCorreologin = (gcnew System::Windows::Forms::TextBox());
 			this->panelRegistro = (gcnew System::Windows::Forms::Panel());
 			this->buttonVolverRegistro = (gcnew System::Windows::Forms::Button());
 			this->buttonRegistrarCuenta = (gcnew System::Windows::Forms::Button());
 			this->textBoxClaveRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxCorreoRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxNombreRegistro = (gcnew System::Windows::Forms::TextBox());
-			this->buttonVolverlogin = (gcnew System::Windows::Forms::Button());
-			this->buttonIngresarLogin = (gcnew System::Windows::Forms::Button());
-			this->textBoxClaveLogin = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxCorreologin = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->panelInicio->SuspendLayout();
 			this->panelLogin->SuspendLayout();
 			this->panelRegistro->SuspendLayout();
@@ -158,6 +168,8 @@ namespace TrabajoFinalv1 {
 			// 
 			// panelLogin
 			// 
+			this->panelLogin->Controls->Add(this->label5);
+			this->panelLogin->Controls->Add(this->label4);
 			this->panelLogin->Controls->Add(this->buttonVolverlogin);
 			this->panelLogin->Controls->Add(this->buttonIngresarLogin);
 			this->panelLogin->Controls->Add(this->textBoxClaveLogin);
@@ -167,8 +179,45 @@ namespace TrabajoFinalv1 {
 			this->panelLogin->Size = System::Drawing::Size(479, 540);
 			this->panelLogin->TabIndex = 3;
 			// 
+			// buttonVolverlogin
+			// 
+			this->buttonVolverlogin->Location = System::Drawing::Point(201, 307);
+			this->buttonVolverlogin->Name = L"buttonVolverlogin";
+			this->buttonVolverlogin->Size = System::Drawing::Size(84, 23);
+			this->buttonVolverlogin->TabIndex = 3;
+			this->buttonVolverlogin->Text = L"button1";
+			this->buttonVolverlogin->UseVisualStyleBackColor = true;
+			this->buttonVolverlogin->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverlogin_Click);
+			// 
+			// buttonIngresarLogin
+			// 
+			this->buttonIngresarLogin->Location = System::Drawing::Point(201, 259);
+			this->buttonIngresarLogin->Name = L"buttonIngresarLogin";
+			this->buttonIngresarLogin->Size = System::Drawing::Size(84, 28);
+			this->buttonIngresarLogin->TabIndex = 2;
+			this->buttonIngresarLogin->Text = L"Ingresar";
+			this->buttonIngresarLogin->UseVisualStyleBackColor = true;
+			// 
+			// textBoxClaveLogin
+			// 
+			this->textBoxClaveLogin->Location = System::Drawing::Point(164, 196);
+			this->textBoxClaveLogin->Name = L"textBoxClaveLogin";
+			this->textBoxClaveLogin->Size = System::Drawing::Size(159, 22);
+			this->textBoxClaveLogin->TabIndex = 1;
+			this->textBoxClaveLogin->UseSystemPasswordChar = true;
+			// 
+			// textBoxCorreologin
+			// 
+			this->textBoxCorreologin->Location = System::Drawing::Point(164, 139);
+			this->textBoxCorreologin->Name = L"textBoxCorreologin";
+			this->textBoxCorreologin->Size = System::Drawing::Size(159, 22);
+			this->textBoxCorreologin->TabIndex = 0;
+			// 
 			// panelRegistro
 			// 
+			this->panelRegistro->Controls->Add(this->label3);
+			this->panelRegistro->Controls->Add(this->label2);
+			this->panelRegistro->Controls->Add(this->label1);
 			this->panelRegistro->Controls->Add(this->buttonVolverRegistro);
 			this->panelRegistro->Controls->Add(this->buttonRegistrarCuenta);
 			this->panelRegistro->Controls->Add(this->textBoxClaveRegistro);
@@ -215,53 +264,64 @@ namespace TrabajoFinalv1 {
 			// 
 			// textBoxNombreRegistro
 			// 
-			this->textBoxNombreRegistro->Location = System::Drawing::Point(171, 125);
+			this->textBoxNombreRegistro->Location = System::Drawing::Point(171, 126);
 			this->textBoxNombreRegistro->Name = L"textBoxNombreRegistro";
 			this->textBoxNombreRegistro->Size = System::Drawing::Size(152, 22);
 			this->textBoxNombreRegistro->TabIndex = 0;
 			// 
-			// buttonVolverlogin
+			// label1
 			// 
-			this->buttonVolverlogin->Location = System::Drawing::Point(201, 307);
-			this->buttonVolverlogin->Name = L"buttonVolverlogin";
-			this->buttonVolverlogin->Size = System::Drawing::Size(84, 23);
-			this->buttonVolverlogin->TabIndex = 3;
-			this->buttonVolverlogin->Text = L"button1";
-			this->buttonVolverlogin->UseVisualStyleBackColor = true;
-			this->buttonVolverlogin->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverlogin_Click);
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(114, 129);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(60, 16);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Usuario: ";
 			// 
-			// buttonIngresarLogin
+			// label2
 			// 
-			this->buttonIngresarLogin->Location = System::Drawing::Point(201, 259);
-			this->buttonIngresarLogin->Name = L"buttonIngresarLogin";
-			this->buttonIngresarLogin->Size = System::Drawing::Size(84, 28);
-			this->buttonIngresarLogin->TabIndex = 2;
-			this->buttonIngresarLogin->Text = L"Ingresar";
-			this->buttonIngresarLogin->UseVisualStyleBackColor = true;
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(120, 170);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(54, 16);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Correo: ";
 			// 
-			// textBoxClaveLogin
+			// label3
 			// 
-			this->textBoxClaveLogin->Location = System::Drawing::Point(164, 196);
-			this->textBoxClaveLogin->Name = L"textBoxClaveLogin";
-			this->textBoxClaveLogin->Size = System::Drawing::Size(159, 22);
-			this->textBoxClaveLogin->TabIndex = 1;
-			this->textBoxClaveLogin->UseSystemPasswordChar = true;
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(92, 212);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(82, 16);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Contraseña: ";
 			// 
-			// textBoxCorreologin
+			// label4
 			// 
-			this->textBoxCorreologin->Location = System::Drawing::Point(164, 139);
-			this->textBoxCorreologin->Name = L"textBoxCorreologin";
-			this->textBoxCorreologin->Size = System::Drawing::Size(159, 22);
-			this->textBoxCorreologin->TabIndex = 0;
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(114, 142);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(54, 16);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"Correo: ";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(86, 199);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(82, 16);
+			this->label5->TabIndex = 6;
+			this->label5->Text = L"Contraseña: ";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(503, 564);
-			this->Controls->Add(this->panelRegistro);
 			this->Controls->Add(this->panelLogin);
 			this->Controls->Add(this->panelInicio);
+			this->Controls->Add(this->panelRegistro);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->panelInicio->ResumeLayout(false);
