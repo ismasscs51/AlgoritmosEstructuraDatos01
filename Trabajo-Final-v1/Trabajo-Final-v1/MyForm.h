@@ -322,8 +322,8 @@ namespace TrabajoFinalv1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(503, 564);
-			this->Controls->Add(this->panelLogin);
 			this->Controls->Add(this->panelInicio);
+			this->Controls->Add(this->panelLogin);
 			this->Controls->Add(this->panelRegistro);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
