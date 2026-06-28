@@ -51,18 +51,38 @@ namespace TrabajoFinalv1 {
 			panelInicio->Visible = true;
 			panelLogin->Visible = false;
 			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = false;
 		}
 
 		void mostrarLogin() {
 			panelInicio->Visible = false;
 			panelLogin->Visible = true;
 			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = false;
 		}
 
 		void mostrarRegistro() {
 			panelInicio->Visible = false;
 			panelLogin->Visible = false;
 			panelRegistro->Visible = true;
+			panelMenuPrincipal->Visible = false;
+		}
+
+		void mostrarMenuPrincipal() {
+			panelInicio->Visible = false;
+			panelLogin->Visible = false;
+			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = true;
+		}
+
+		void actualizarMenuPrincipal() {
+			Usuario* usuario = sistema->getUsuarioActual();
+
+			if (usuario != nullptr) {
+				labelBienvenidaMenu->Text = "Bienvenido, " + gcnew System::String(usuario->getNombre().c_str());
+				labelPuntosMenu->Text = "Puntos: " + usuario->getPuntos().ToString();
+				
+			}
 		}
 
 		Duolingo* sistema;
@@ -87,6 +107,19 @@ namespace TrabajoFinalv1 {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Panel^ panelMenuPrincipal;
+	private: System::Windows::Forms::Label^ labelTituloMenu;
+	private: System::Windows::Forms::Button^ buttonLeccion1;
+
+
+	private: System::Windows::Forms::Label^ labelCursoMenu;
+	private: System::Windows::Forms::Label^ labelPuntosMenu;
+	private: System::Windows::Forms::Label^ labelBienvenidaMenu;
+	private: System::Windows::Forms::Button^ buttonCerrarsesion;
+
+	private: System::Windows::Forms::Button^ buttonVerProgreso;
+	private: System::Windows::Forms::Button^ buttonLeccion3;
+	private: System::Windows::Forms::Button^ buttonLeccion2;
 
 
 		/// </summary>
@@ -100,6 +133,16 @@ namespace TrabajoFinalv1 {
 		void InitializeComponent(void)
 		{
 			this->panelInicio = (gcnew System::Windows::Forms::Panel());
+			this->panelMenuPrincipal = (gcnew System::Windows::Forms::Panel());
+			this->buttonCerrarsesion = (gcnew System::Windows::Forms::Button());
+			this->buttonVerProgreso = (gcnew System::Windows::Forms::Button());
+			this->buttonLeccion3 = (gcnew System::Windows::Forms::Button());
+			this->buttonLeccion2 = (gcnew System::Windows::Forms::Button());
+			this->buttonLeccion1 = (gcnew System::Windows::Forms::Button());
+			this->labelCursoMenu = (gcnew System::Windows::Forms::Label());
+			this->labelPuntosMenu = (gcnew System::Windows::Forms::Label());
+			this->labelBienvenidaMenu = (gcnew System::Windows::Forms::Label());
+			this->labelTituloMenu = (gcnew System::Windows::Forms::Label());
 			this->buttoniniciarsesion = (gcnew System::Windows::Forms::Button());
 			this->buttonCrearcuenta = (gcnew System::Windows::Forms::Button());
 			this->Tituloinicial = (gcnew System::Windows::Forms::Label());
@@ -120,6 +163,7 @@ namespace TrabajoFinalv1 {
 			this->textBoxCorreoRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxNombreRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->panelInicio->SuspendLayout();
+			this->panelMenuPrincipal->SuspendLayout();
 			this->panelLogin->SuspendLayout();
 			this->panelRegistro->SuspendLayout();
 			this->SuspendLayout();
@@ -133,6 +177,108 @@ namespace TrabajoFinalv1 {
 			this->panelInicio->Name = L"panelInicio";
 			this->panelInicio->Size = System::Drawing::Size(479, 540);
 			this->panelInicio->TabIndex = 1;
+			// 
+			// panelMenuPrincipal
+			// 
+			this->panelMenuPrincipal->Controls->Add(this->buttonCerrarsesion);
+			this->panelMenuPrincipal->Controls->Add(this->buttonVerProgreso);
+			this->panelMenuPrincipal->Controls->Add(this->buttonLeccion3);
+			this->panelMenuPrincipal->Controls->Add(this->buttonLeccion2);
+			this->panelMenuPrincipal->Controls->Add(this->buttonLeccion1);
+			this->panelMenuPrincipal->Controls->Add(this->labelCursoMenu);
+			this->panelMenuPrincipal->Controls->Add(this->labelPuntosMenu);
+			this->panelMenuPrincipal->Controls->Add(this->labelBienvenidaMenu);
+			this->panelMenuPrincipal->Controls->Add(this->labelTituloMenu);
+			this->panelMenuPrincipal->Location = System::Drawing::Point(12, 12);
+			this->panelMenuPrincipal->Name = L"panelMenuPrincipal";
+			this->panelMenuPrincipal->Size = System::Drawing::Size(479, 540);
+			this->panelMenuPrincipal->TabIndex = 3;
+			this->panelMenuPrincipal->Visible = false;
+			// 
+			// buttonCerrarsesion
+			// 
+			this->buttonCerrarsesion->Location = System::Drawing::Point(360, 18);
+			this->buttonCerrarsesion->Name = L"buttonCerrarsesion";
+			this->buttonCerrarsesion->Size = System::Drawing::Size(116, 23);
+			this->buttonCerrarsesion->TabIndex = 8;
+			this->buttonCerrarsesion->Text = L"Cerrar sesion";
+			this->buttonCerrarsesion->UseVisualStyleBackColor = true;
+			this->buttonCerrarsesion->Click += gcnew System::EventHandler(this, &MyForm::buttonCerrarsesion_Click);
+			// 
+			// buttonVerProgreso
+			// 
+			this->buttonVerProgreso->Location = System::Drawing::Point(23, 501);
+			this->buttonVerProgreso->Name = L"buttonVerProgreso";
+			this->buttonVerProgreso->Size = System::Drawing::Size(120, 23);
+			this->buttonVerProgreso->TabIndex = 7;
+			this->buttonVerProgreso->Text = L"Ver progreso";
+			this->buttonVerProgreso->UseVisualStyleBackColor = true;
+			this->buttonVerProgreso->Click += gcnew System::EventHandler(this, &MyForm::buttonVerProgreso_Click);
+			// 
+			// buttonLeccion3
+			// 
+			this->buttonLeccion3->Enabled = false;
+			this->buttonLeccion3->Location = System::Drawing::Point(210, 356);
+			this->buttonLeccion3->Name = L"buttonLeccion3";
+			this->buttonLeccion3->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion3->TabIndex = 6;
+			this->buttonLeccion3->Text = L"Leccion 3";
+			this->buttonLeccion3->UseVisualStyleBackColor = true;
+			// 
+			// buttonLeccion2
+			// 
+			this->buttonLeccion2->Enabled = false;
+			this->buttonLeccion2->Location = System::Drawing::Point(210, 285);
+			this->buttonLeccion2->Name = L"buttonLeccion2";
+			this->buttonLeccion2->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion2->TabIndex = 5;
+			this->buttonLeccion2->Text = L"Leccion 2";
+			this->buttonLeccion2->UseVisualStyleBackColor = true;
+			// 
+			// buttonLeccion1
+			// 
+			this->buttonLeccion1->Location = System::Drawing::Point(210, 215);
+			this->buttonLeccion1->Name = L"buttonLeccion1";
+			this->buttonLeccion1->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion1->TabIndex = 4;
+			this->buttonLeccion1->Text = L"Leccion 1";
+			this->buttonLeccion1->UseVisualStyleBackColor = true;
+			// 
+			// labelCursoMenu
+			// 
+			this->labelCursoMenu->AutoSize = true;
+			this->labelCursoMenu->Location = System::Drawing::Point(14, 112);
+			this->labelCursoMenu->Name = L"labelCursoMenu";
+			this->labelCursoMenu->Size = System::Drawing::Size(129, 16);
+			this->labelCursoMenu->TabIndex = 3;
+			this->labelCursoMenu->Text = L"Curso: Ingles Basico";
+			// 
+			// labelPuntosMenu
+			// 
+			this->labelPuntosMenu->AutoSize = true;
+			this->labelPuntosMenu->Location = System::Drawing::Point(14, 87);
+			this->labelPuntosMenu->Name = L"labelPuntosMenu";
+			this->labelPuntosMenu->Size = System::Drawing::Size(51, 16);
+			this->labelPuntosMenu->TabIndex = 2;
+			this->labelPuntosMenu->Text = L"Puntos:";
+			// 
+			// labelBienvenidaMenu
+			// 
+			this->labelBienvenidaMenu->AutoSize = true;
+			this->labelBienvenidaMenu->Location = System::Drawing::Point(12, 62);
+			this->labelBienvenidaMenu->Name = L"labelBienvenidaMenu";
+			this->labelBienvenidaMenu->Size = System::Drawing::Size(78, 16);
+			this->labelBienvenidaMenu->TabIndex = 1;
+			this->labelBienvenidaMenu->Text = L"Bienvenido:";
+			// 
+			// labelTituloMenu
+			// 
+			this->labelTituloMenu->AutoSize = true;
+			this->labelTituloMenu->Location = System::Drawing::Point(14, 18);
+			this->labelTituloMenu->Name = L"labelTituloMenu";
+			this->labelTituloMenu->Size = System::Drawing::Size(61, 16);
+			this->labelTituloMenu->TabIndex = 0;
+			this->labelTituloMenu->Text = L"Duolingo";
 			// 
 			// buttoniniciarsesion
 			// 
@@ -322,12 +468,15 @@ namespace TrabajoFinalv1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(503, 564);
+			this->Controls->Add(this->panelMenuPrincipal);
 			this->Controls->Add(this->panelInicio);
 			this->Controls->Add(this->panelLogin);
 			this->Controls->Add(this->panelRegistro);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->panelInicio->ResumeLayout(false);
+			this->panelMenuPrincipal->ResumeLayout(false);
+			this->panelMenuPrincipal->PerformLayout();
 			this->panelLogin->ResumeLayout(false);
 			this->panelLogin->PerformLayout();
 			this->panelRegistro->ResumeLayout(false);
@@ -359,6 +508,8 @@ private: System::Void buttonIngresarLogin_Click(System::Object^ sender, System::
 	if (logincorrecto) {
 		Usuario* usuario = sistema->getUsuarioActual();
 		string datos = usuario->mostrarDatos();
+		actualizarMenuPrincipal();
+		mostrarMenuPrincipal();	
 
 		MessageBox::Show(gcnew String(datos.c_str()), "Bienvenido");
 	}
@@ -392,6 +543,13 @@ private: System::Void buttonRegistrarCuenta_Click(System::Object^ sender, System
 	else {
 		MessageBox::Show("No se pudo registrar, El correo ya existe");
 	}
+
+}
+private: System::Void buttonCerrarsesion_Click(System::Object^ sender, System::EventArgs^ e) {
+	sistema->cerrarSesion();
+	mostrarInicio();
+}
+private: System::Void buttonVerProgreso_Click(System::Object^ sender, System::EventArgs^ e) {
 
 }
 };
