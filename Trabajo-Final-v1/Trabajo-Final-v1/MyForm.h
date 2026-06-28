@@ -55,6 +55,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarLogin() {
@@ -65,6 +68,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarRegistro() {
@@ -75,6 +81,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarMenuPrincipal() {
@@ -85,6 +94,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarPractica() {
@@ -95,6 +107,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = true;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarRanking() {
@@ -105,6 +120,9 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = true;
 			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
 		}
 
 		void mostrarDiccionario() {
@@ -115,6 +133,48 @@ namespace TrabajoFinalv1 {
 			panelPractica->Visible = false;
 			panelRanking->Visible = false;
 			panelDiccionario->Visible = true;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
+		}
+
+		void mostrarRutaLeccion() {
+			panelInicio->Visible = false;
+			panelLogin->Visible = false;
+			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = false;
+			panelPractica->Visible = false;
+			panelRanking->Visible = false;
+			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = true;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = false;
+		}
+
+		void mostrarProgreso() {
+			panelInicio->Visible = false;
+			panelLogin->Visible = false;
+			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = false;
+			panelPractica->Visible = false;
+			panelRanking->Visible = false;
+			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = true;
+			panelHistorial->Visible = false;
+		}
+
+		void mostrarHistorial() {
+			panelInicio->Visible = false;
+			panelLogin->Visible = false;
+			panelRegistro->Visible = false;
+			panelMenuPrincipal->Visible = false;
+			panelPractica->Visible = false;
+			panelRanking->Visible = false;
+			panelDiccionario->Visible = false;
+			panelRutaLeccion->Visible = false;
+			panelProgreso->Visible = false;
+			panelHistorial->Visible = true;
 		}
 
 		void actualizarMenuPrincipal() {
@@ -124,6 +184,25 @@ namespace TrabajoFinalv1 {
 				labelBienvenidaMenu->Text = "Bienvenido, " + gcnew System::String(usuario->getNombre().c_str());
 				labelPuntosMenu->Text = "Puntos: " + usuario->getPuntos().ToString();
 				
+			}
+
+			buttonLeccion1->Enabled = true;
+
+			buttonLeccion2->Enabled = sistema->puedeIngresarLeccion(2);
+			buttonLeccion3->Enabled = sistema->puedeIngresarLeccion(3);
+
+			if (sistema->puedeIngresarLeccion(2)) {
+				buttonLeccion2->Text = L"Leccion 2: Numeros";
+			}
+			else {
+				buttonLeccion2->Text = L"Leccion 2: Numeros - Bloqueada";
+			}
+
+			if (sistema->puedeIngresarLeccion(3)) {
+				buttonLeccion3->Text = L"Leccion 3: Animales";
+			}
+			else {
+				buttonLeccion3->Text = L"Leccion 3: Animales - Bloqueada";
 			}
 		}
 
@@ -178,6 +257,24 @@ namespace TrabajoFinalv1 {
 			std::string diccionario = sistema->obtenerDiccionarioPalabras();
 
 			richTextBoxDiccionario->Text = gcnew System::String(diccionario.c_str());
+		}
+
+		void actualizarPanelRutaLecciones() {
+			string ruta = sistema->obtenerRutaLecciones();
+
+			richTextBoxRutaLeccion->Text = gcnew System::String(ruta.c_str());
+		}
+
+		void actualizarPanelProgreso() {
+			std::string progreso = sistema->obtenerProgresoActual();
+
+			richTextBoxProgreso->Text = gcnew System::String(progreso.c_str());
+		}
+
+		void actualizarPanelHistorial() {
+			std::string historial = sistema->obtenerHistorialRespuestas();
+
+			richTextBoxHistorial->Text = gcnew System::String(historial.c_str());
 		}
 
 		Duolingo* sistema;
@@ -239,6 +336,27 @@ private: System::Windows::Forms::RichTextBox^ richTextBoxDiccionario;
 private: System::Windows::Forms::Label^ labelTituloDiccionario;
 private: System::Windows::Forms::Button^ buttonVolverDiccionario;
 private: System::Windows::Forms::Button^ buttonVerDiccionario;
+private: System::Windows::Forms::Panel^ panelRutaLeccion;
+private: System::Windows::Forms::Button^ buttonVolverRutaLeccion;
+
+
+private: System::Windows::Forms::RichTextBox^ richTextBoxRutaLeccion;
+private: System::Windows::Forms::Label^ labelTituloRutaLeccion;
+private: System::Windows::Forms::Button^ buttonVerRutaLecciones;
+private: System::Windows::Forms::Button^ buttonRankingQuicksort;
+private: System::Windows::Forms::Button^ buttonRankingAVL;
+private: System::Windows::Forms::Button^ buttonCargarDataset;
+private: System::Windows::Forms::Panel^ panelProgreso;
+private: System::Windows::Forms::Button^ buttonVolverProgreso;
+private: System::Windows::Forms::RichTextBox^ richTextBoxProgreso;
+private: System::Windows::Forms::Label^ labelProgreso;
+private: System::Windows::Forms::Panel^ panelHistorial;
+private: System::Windows::Forms::Button^ buttonVolverHistorial;
+
+private: System::Windows::Forms::RichTextBox^ richTextBoxHistorial;
+private: System::Windows::Forms::Label^ label6;
+
+
 
 
 
@@ -267,6 +385,8 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->labelNumeroPregunta = (gcnew System::Windows::Forms::Label());
 			this->labelTituloPractica = (gcnew System::Windows::Forms::Label());
 			this->panelMenuPrincipal = (gcnew System::Windows::Forms::Panel());
+			this->buttonCargarDataset = (gcnew System::Windows::Forms::Button());
+			this->buttonVerRutaLecciones = (gcnew System::Windows::Forms::Button());
 			this->buttonVerDiccionario = (gcnew System::Windows::Forms::Button());
 			this->buttonVerRanking = (gcnew System::Windows::Forms::Button());
 			this->buttonVerHistorial = (gcnew System::Windows::Forms::Button());
@@ -296,6 +416,8 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->textBoxCorreoRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxNombreRegistro = (gcnew System::Windows::Forms::TextBox());
 			this->panelRanking = (gcnew System::Windows::Forms::Panel());
+			this->buttonRankingQuicksort = (gcnew System::Windows::Forms::Button());
+			this->buttonRankingAVL = (gcnew System::Windows::Forms::Button());
 			this->buttonVolverRanking = (gcnew System::Windows::Forms::Button());
 			this->richTextBoxRanking = (gcnew System::Windows::Forms::RichTextBox());
 			this->labelTituloRanking = (gcnew System::Windows::Forms::Label());
@@ -303,6 +425,18 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->buttonVolverDiccionario = (gcnew System::Windows::Forms::Button());
 			this->richTextBoxDiccionario = (gcnew System::Windows::Forms::RichTextBox());
 			this->labelTituloDiccionario = (gcnew System::Windows::Forms::Label());
+			this->panelRutaLeccion = (gcnew System::Windows::Forms::Panel());
+			this->buttonVolverRutaLeccion = (gcnew System::Windows::Forms::Button());
+			this->richTextBoxRutaLeccion = (gcnew System::Windows::Forms::RichTextBox());
+			this->labelTituloRutaLeccion = (gcnew System::Windows::Forms::Label());
+			this->panelProgreso = (gcnew System::Windows::Forms::Panel());
+			this->buttonVolverProgreso = (gcnew System::Windows::Forms::Button());
+			this->richTextBoxProgreso = (gcnew System::Windows::Forms::RichTextBox());
+			this->labelProgreso = (gcnew System::Windows::Forms::Label());
+			this->panelHistorial = (gcnew System::Windows::Forms::Panel());
+			this->buttonVolverHistorial = (gcnew System::Windows::Forms::Button());
+			this->richTextBoxHistorial = (gcnew System::Windows::Forms::RichTextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->panelInicio->SuspendLayout();
 			this->panelPractica->SuspendLayout();
 			this->panelMenuPrincipal->SuspendLayout();
@@ -310,6 +444,9 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->panelRegistro->SuspendLayout();
 			this->panelRanking->SuspendLayout();
 			this->panelDiccionario->SuspendLayout();
+			this->panelRutaLeccion->SuspendLayout();
+			this->panelProgreso->SuspendLayout();
+			this->panelHistorial->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panelInicio
@@ -460,6 +597,8 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// panelMenuPrincipal
 			// 
+			this->panelMenuPrincipal->Controls->Add(this->buttonCargarDataset);
+			this->panelMenuPrincipal->Controls->Add(this->buttonVerRutaLecciones);
 			this->panelMenuPrincipal->Controls->Add(this->buttonVerDiccionario);
 			this->panelMenuPrincipal->Controls->Add(this->buttonVerRanking);
 			this->panelMenuPrincipal->Controls->Add(this->buttonVerHistorial);
@@ -478,11 +617,31 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->panelMenuPrincipal->TabIndex = 3;
 			this->panelMenuPrincipal->Visible = false;
 			// 
+			// buttonCargarDataset
+			// 
+			this->buttonCargarDataset->Location = System::Drawing::Point(308, 475);
+			this->buttonCargarDataset->Name = L"buttonCargarDataset";
+			this->buttonCargarDataset->Size = System::Drawing::Size(116, 23);
+			this->buttonCargarDataset->TabIndex = 13;
+			this->buttonCargarDataset->Text = L"Carga dataset";
+			this->buttonCargarDataset->UseVisualStyleBackColor = true;
+			this->buttonCargarDataset->Click += gcnew System::EventHandler(this, &MyForm::buttonCargarDataset_Click);
+			// 
+			// buttonVerRutaLecciones
+			// 
+			this->buttonVerRutaLecciones->Location = System::Drawing::Point(308, 514);
+			this->buttonVerRutaLecciones->Name = L"buttonVerRutaLecciones";
+			this->buttonVerRutaLecciones->Size = System::Drawing::Size(116, 23);
+			this->buttonVerRutaLecciones->TabIndex = 12;
+			this->buttonVerRutaLecciones->Text = L"Ver ruta";
+			this->buttonVerRutaLecciones->UseVisualStyleBackColor = true;
+			this->buttonVerRutaLecciones->Click += gcnew System::EventHandler(this, &MyForm::buttonVerRutaLecciones_Click);
+			// 
 			// buttonVerDiccionario
 			// 
-			this->buttonVerDiccionario->Location = System::Drawing::Point(369, 501);
+			this->buttonVerDiccionario->Location = System::Drawing::Point(186, 514);
 			this->buttonVerDiccionario->Name = L"buttonVerDiccionario";
-			this->buttonVerDiccionario->Size = System::Drawing::Size(107, 23);
+			this->buttonVerDiccionario->Size = System::Drawing::Size(116, 23);
 			this->buttonVerDiccionario->TabIndex = 11;
 			this->buttonVerDiccionario->Text = L"Ver Diccionario";
 			this->buttonVerDiccionario->UseVisualStyleBackColor = true;
@@ -490,9 +649,9 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// buttonVerRanking
 			// 
-			this->buttonVerRanking->Location = System::Drawing::Point(255, 501);
+			this->buttonVerRanking->Location = System::Drawing::Point(183, 475);
 			this->buttonVerRanking->Name = L"buttonVerRanking";
-			this->buttonVerRanking->Size = System::Drawing::Size(94, 23);
+			this->buttonVerRanking->Size = System::Drawing::Size(119, 23);
 			this->buttonVerRanking->TabIndex = 10;
 			this->buttonVerRanking->Text = L"Ver ranking";
 			this->buttonVerRanking->UseVisualStyleBackColor = true;
@@ -500,7 +659,7 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// buttonVerHistorial
 			// 
-			this->buttonVerHistorial->Location = System::Drawing::Point(129, 501);
+			this->buttonVerHistorial->Location = System::Drawing::Point(78, 514);
 			this->buttonVerHistorial->Name = L"buttonVerHistorial";
 			this->buttonVerHistorial->Size = System::Drawing::Size(102, 23);
 			this->buttonVerHistorial->TabIndex = 9;
@@ -520,7 +679,7 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// buttonVerProgreso
 			// 
-			this->buttonVerProgreso->Location = System::Drawing::Point(3, 501);
+			this->buttonVerProgreso->Location = System::Drawing::Point(80, 475);
 			this->buttonVerProgreso->Name = L"buttonVerProgreso";
 			this->buttonVerProgreso->Size = System::Drawing::Size(100, 23);
 			this->buttonVerProgreso->TabIndex = 7;
@@ -531,28 +690,30 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// buttonLeccion3
 			// 
 			this->buttonLeccion3->Enabled = false;
-			this->buttonLeccion3->Location = System::Drawing::Point(210, 356);
+			this->buttonLeccion3->Location = System::Drawing::Point(201, 356);
 			this->buttonLeccion3->Name = L"buttonLeccion3";
-			this->buttonLeccion3->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion3->Size = System::Drawing::Size(92, 38);
 			this->buttonLeccion3->TabIndex = 6;
 			this->buttonLeccion3->Text = L"Leccion 3";
 			this->buttonLeccion3->UseVisualStyleBackColor = true;
+			this->buttonLeccion3->Click += gcnew System::EventHandler(this, &MyForm::buttonLeccion3_Click);
 			// 
 			// buttonLeccion2
 			// 
 			this->buttonLeccion2->Enabled = false;
-			this->buttonLeccion2->Location = System::Drawing::Point(210, 285);
+			this->buttonLeccion2->Location = System::Drawing::Point(201, 285);
 			this->buttonLeccion2->Name = L"buttonLeccion2";
-			this->buttonLeccion2->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion2->Size = System::Drawing::Size(92, 38);
 			this->buttonLeccion2->TabIndex = 5;
 			this->buttonLeccion2->Text = L"Leccion 2";
 			this->buttonLeccion2->UseVisualStyleBackColor = true;
+			this->buttonLeccion2->Click += gcnew System::EventHandler(this, &MyForm::buttonLeccion2_Click);
 			// 
 			// buttonLeccion1
 			// 
-			this->buttonLeccion1->Location = System::Drawing::Point(210, 215);
+			this->buttonLeccion1->Location = System::Drawing::Point(202, 215);
 			this->buttonLeccion1->Name = L"buttonLeccion1";
-			this->buttonLeccion1->Size = System::Drawing::Size(75, 38);
+			this->buttonLeccion1->Size = System::Drawing::Size(92, 38);
 			this->buttonLeccion1->TabIndex = 4;
 			this->buttonLeccion1->Text = L"Leccion 1";
 			this->buttonLeccion1->UseVisualStyleBackColor = true;
@@ -612,18 +773,18 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(86, 199);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(82, 16);
+			this->label5->Size = System::Drawing::Size(79, 16);
 			this->label5->TabIndex = 6;
-			this->label5->Text = L"Contraseña: ";
+			this->label5->Text = L"Contraseña:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(114, 142);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(54, 16);
+			this->label4->Size = System::Drawing::Size(51, 16);
 			this->label4->TabIndex = 5;
-			this->label4->Text = L"Correo: ";
+			this->label4->Text = L"Correo:";
 			// 
 			// buttonVolverlogin
 			// 
@@ -647,7 +808,7 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// textBoxClaveLogin
 			// 
-			this->textBoxClaveLogin->Location = System::Drawing::Point(164, 196);
+			this->textBoxClaveLogin->Location = System::Drawing::Point(170, 196);
 			this->textBoxClaveLogin->Name = L"textBoxClaveLogin";
 			this->textBoxClaveLogin->Size = System::Drawing::Size(159, 22);
 			this->textBoxClaveLogin->TabIndex = 1;
@@ -655,7 +816,7 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// textBoxCorreologin
 			// 
-			this->textBoxCorreologin->Location = System::Drawing::Point(164, 139);
+			this->textBoxCorreologin->Location = System::Drawing::Point(170, 139);
 			this->textBoxCorreologin->Name = L"textBoxCorreologin";
 			this->textBoxCorreologin->Size = System::Drawing::Size(159, 22);
 			this->textBoxCorreologin->TabIndex = 0;
@@ -680,27 +841,27 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(92, 212);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(82, 16);
+			this->label3->Size = System::Drawing::Size(79, 16);
 			this->label3->TabIndex = 7;
-			this->label3->Text = L"Contraseña: ";
+			this->label3->Text = L"Contraseña:";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(120, 170);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(54, 16);
+			this->label2->Size = System::Drawing::Size(51, 16);
 			this->label2->TabIndex = 6;
-			this->label2->Text = L"Correo: ";
+			this->label2->Text = L"Correo:";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(114, 129);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(60, 16);
+			this->label1->Size = System::Drawing::Size(57, 16);
 			this->label1->TabIndex = 5;
-			this->label1->Text = L"Usuario: ";
+			this->label1->Text = L"Usuario:";
 			// 
 			// buttonVolverRegistro
 			// 
@@ -724,7 +885,7 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// textBoxClaveRegistro
 			// 
-			this->textBoxClaveRegistro->Location = System::Drawing::Point(171, 209);
+			this->textBoxClaveRegistro->Location = System::Drawing::Point(177, 209);
 			this->textBoxClaveRegistro->Name = L"textBoxClaveRegistro";
 			this->textBoxClaveRegistro->Size = System::Drawing::Size(152, 22);
 			this->textBoxClaveRegistro->TabIndex = 2;
@@ -732,20 +893,22 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			// 
 			// textBoxCorreoRegistro
 			// 
-			this->textBoxCorreoRegistro->Location = System::Drawing::Point(171, 167);
+			this->textBoxCorreoRegistro->Location = System::Drawing::Point(177, 167);
 			this->textBoxCorreoRegistro->Name = L"textBoxCorreoRegistro";
 			this->textBoxCorreoRegistro->Size = System::Drawing::Size(152, 22);
 			this->textBoxCorreoRegistro->TabIndex = 1;
 			// 
 			// textBoxNombreRegistro
 			// 
-			this->textBoxNombreRegistro->Location = System::Drawing::Point(171, 126);
+			this->textBoxNombreRegistro->Location = System::Drawing::Point(177, 126);
 			this->textBoxNombreRegistro->Name = L"textBoxNombreRegistro";
 			this->textBoxNombreRegistro->Size = System::Drawing::Size(152, 22);
 			this->textBoxNombreRegistro->TabIndex = 0;
 			// 
 			// panelRanking
 			// 
+			this->panelRanking->Controls->Add(this->buttonRankingQuicksort);
+			this->panelRanking->Controls->Add(this->buttonRankingAVL);
 			this->panelRanking->Controls->Add(this->buttonVolverRanking);
 			this->panelRanking->Controls->Add(this->richTextBoxRanking);
 			this->panelRanking->Controls->Add(this->labelTituloRanking);
@@ -754,9 +917,29 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->panelRanking->Size = System::Drawing::Size(479, 540);
 			this->panelRanking->TabIndex = 5;
 			// 
+			// buttonRankingQuicksort
+			// 
+			this->buttonRankingQuicksort->Location = System::Drawing::Point(274, 454);
+			this->buttonRankingQuicksort->Name = L"buttonRankingQuicksort";
+			this->buttonRankingQuicksort->Size = System::Drawing::Size(141, 27);
+			this->buttonRankingQuicksort->TabIndex = 4;
+			this->buttonRankingQuicksort->Text = L"Ranking Quicksort";
+			this->buttonRankingQuicksort->UseVisualStyleBackColor = true;
+			this->buttonRankingQuicksort->Click += gcnew System::EventHandler(this, &MyForm::buttonRankingQuicksort_Click);
+			// 
+			// buttonRankingAVL
+			// 
+			this->buttonRankingAVL->Location = System::Drawing::Point(62, 454);
+			this->buttonRankingAVL->Name = L"buttonRankingAVL";
+			this->buttonRankingAVL->Size = System::Drawing::Size(147, 27);
+			this->buttonRankingAVL->TabIndex = 3;
+			this->buttonRankingAVL->Text = L"Ranking Arbol";
+			this->buttonRankingAVL->UseVisualStyleBackColor = true;
+			this->buttonRankingAVL->Click += gcnew System::EventHandler(this, &MyForm::buttonRankingAVL_Click);
+			// 
 			// buttonVolverRanking
 			// 
-			this->buttonVolverRanking->Location = System::Drawing::Point(149, 487);
+			this->buttonVolverRanking->Location = System::Drawing::Point(144, 487);
 			this->buttonVolverRanking->Name = L"buttonVolverRanking";
 			this->buttonVolverRanking->Size = System::Drawing::Size(191, 37);
 			this->buttonVolverRanking->TabIndex = 2;
@@ -824,18 +1007,143 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->labelTituloDiccionario->TabIndex = 0;
 			this->labelTituloDiccionario->Text = L"Diccionario";
 			// 
+			// panelRutaLeccion
+			// 
+			this->panelRutaLeccion->Controls->Add(this->buttonVolverRutaLeccion);
+			this->panelRutaLeccion->Controls->Add(this->richTextBoxRutaLeccion);
+			this->panelRutaLeccion->Controls->Add(this->labelTituloRutaLeccion);
+			this->panelRutaLeccion->Location = System::Drawing::Point(12, 12);
+			this->panelRutaLeccion->Name = L"panelRutaLeccion";
+			this->panelRutaLeccion->Size = System::Drawing::Size(479, 540);
+			this->panelRutaLeccion->TabIndex = 7;
+			this->panelRutaLeccion->Visible = false;
+			// 
+			// buttonVolverRutaLeccion
+			// 
+			this->buttonVolverRutaLeccion->Location = System::Drawing::Point(139, 487);
+			this->buttonVolverRutaLeccion->Name = L"buttonVolverRutaLeccion";
+			this->buttonVolverRutaLeccion->Size = System::Drawing::Size(224, 31);
+			this->buttonVolverRutaLeccion->TabIndex = 2;
+			this->buttonVolverRutaLeccion->Text = L"Volver al menu";
+			this->buttonVolverRutaLeccion->UseVisualStyleBackColor = true;
+			this->buttonVolverRutaLeccion->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverRutaLeccion_Click);
+			// 
+			// richTextBoxRutaLeccion
+			// 
+			this->richTextBoxRutaLeccion->Location = System::Drawing::Point(71, 81);
+			this->richTextBoxRutaLeccion->Name = L"richTextBoxRutaLeccion";
+			this->richTextBoxRutaLeccion->ReadOnly = true;
+			this->richTextBoxRutaLeccion->Size = System::Drawing::Size(353, 355);
+			this->richTextBoxRutaLeccion->TabIndex = 1;
+			this->richTextBoxRutaLeccion->Text = L"";
+			// 
+			// labelTituloRutaLeccion
+			// 
+			this->labelTituloRutaLeccion->AutoSize = true;
+			this->labelTituloRutaLeccion->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labelTituloRutaLeccion->Location = System::Drawing::Point(111, 28);
+			this->labelTituloRutaLeccion->Name = L"labelTituloRutaLeccion";
+			this->labelTituloRutaLeccion->Size = System::Drawing::Size(264, 31);
+			this->labelTituloRutaLeccion->TabIndex = 0;
+			this->labelTituloRutaLeccion->Text = L"Ruta de Aprendizaje";
+			// 
+			// panelProgreso
+			// 
+			this->panelProgreso->Controls->Add(this->buttonVolverProgreso);
+			this->panelProgreso->Controls->Add(this->richTextBoxProgreso);
+			this->panelProgreso->Controls->Add(this->labelProgreso);
+			this->panelProgreso->Location = System::Drawing::Point(12, 12);
+			this->panelProgreso->Name = L"panelProgreso";
+			this->panelProgreso->Size = System::Drawing::Size(479, 540);
+			this->panelProgreso->TabIndex = 8;
+			// 
+			// buttonVolverProgreso
+			// 
+			this->buttonVolverProgreso->Location = System::Drawing::Point(143, 484);
+			this->buttonVolverProgreso->Name = L"buttonVolverProgreso";
+			this->buttonVolverProgreso->Size = System::Drawing::Size(206, 36);
+			this->buttonVolverProgreso->TabIndex = 2;
+			this->buttonVolverProgreso->Text = L"Volver al menu";
+			this->buttonVolverProgreso->UseVisualStyleBackColor = true;
+			this->buttonVolverProgreso->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverProgreso_Click);
+			// 
+			// richTextBoxProgreso
+			// 
+			this->richTextBoxProgreso->Location = System::Drawing::Point(71, 100);
+			this->richTextBoxProgreso->Name = L"richTextBoxProgreso";
+			this->richTextBoxProgreso->ReadOnly = true;
+			this->richTextBoxProgreso->Size = System::Drawing::Size(342, 348);
+			this->richTextBoxProgreso->TabIndex = 1;
+			this->richTextBoxProgreso->Text = L"";
+			// 
+			// labelProgreso
+			// 
+			this->labelProgreso->AutoSize = true;
+			this->labelProgreso->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labelProgreso->Location = System::Drawing::Point(117, 42);
+			this->labelProgreso->Name = L"labelProgreso";
+			this->labelProgreso->Size = System::Drawing::Size(255, 31);
+			this->labelProgreso->TabIndex = 0;
+			this->labelProgreso->Text = L"Progreso de Usuario";
+			// 
+			// panelHistorial
+			// 
+			this->panelHistorial->Controls->Add(this->buttonVolverHistorial);
+			this->panelHistorial->Controls->Add(this->richTextBoxHistorial);
+			this->panelHistorial->Controls->Add(this->label6);
+			this->panelHistorial->Location = System::Drawing::Point(12, 12);
+			this->panelHistorial->Name = L"panelHistorial";
+			this->panelHistorial->Size = System::Drawing::Size(479, 540);
+			this->panelHistorial->TabIndex = 9;
+			this->panelHistorial->Visible = false;
+			// 
+			// buttonVolverHistorial
+			// 
+			this->buttonVolverHistorial->Location = System::Drawing::Point(150, 475);
+			this->buttonVolverHistorial->Name = L"buttonVolverHistorial";
+			this->buttonVolverHistorial->Size = System::Drawing::Size(185, 35);
+			this->buttonVolverHistorial->TabIndex = 2;
+			this->buttonVolverHistorial->Text = L"Volver al menu";
+			this->buttonVolverHistorial->UseVisualStyleBackColor = true;
+			this->buttonVolverHistorial->Click += gcnew System::EventHandler(this, &MyForm::buttonVolverHistorial_Click);
+			// 
+			// richTextBoxHistorial
+			// 
+			this->richTextBoxHistorial->Location = System::Drawing::Point(71, 100);
+			this->richTextBoxHistorial->Name = L"richTextBoxHistorial";
+			this->richTextBoxHistorial->ReadOnly = true;
+			this->richTextBoxHistorial->Size = System::Drawing::Size(342, 336);
+			this->richTextBoxHistorial->TabIndex = 1;
+			this->richTextBoxHistorial->Text = L"";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(110, 44);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(262, 31);
+			this->label6->TabIndex = 0;
+			this->label6->Text = L"Historial de Usuario";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(503, 564);
-			this->Controls->Add(this->panelDiccionario);
-			this->Controls->Add(this->panelMenuPrincipal);
-			this->Controls->Add(this->panelInicio);
-			this->Controls->Add(this->panelRanking);
-			this->Controls->Add(this->panelPractica);
 			this->Controls->Add(this->panelLogin);
 			this->Controls->Add(this->panelRegistro);
+			this->Controls->Add(this->panelInicio);
+			this->Controls->Add(this->panelHistorial);
+			this->Controls->Add(this->panelProgreso);
+			this->Controls->Add(this->panelMenuPrincipal);
+			this->Controls->Add(this->panelRanking);
+			this->Controls->Add(this->panelRutaLeccion);
+			this->Controls->Add(this->panelDiccionario);
+			this->Controls->Add(this->panelPractica);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
 			this->panelInicio->ResumeLayout(false);
@@ -851,6 +1159,12 @@ private: System::Windows::Forms::Button^ buttonVerDiccionario;
 			this->panelRanking->PerformLayout();
 			this->panelDiccionario->ResumeLayout(false);
 			this->panelDiccionario->PerformLayout();
+			this->panelRutaLeccion->ResumeLayout(false);
+			this->panelRutaLeccion->PerformLayout();
+			this->panelProgreso->ResumeLayout(false);
+			this->panelProgreso->PerformLayout();
+			this->panelHistorial->ResumeLayout(false);
+			this->panelHistorial->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -881,7 +1195,7 @@ private: System::Void buttonIngresarLogin_Click(System::Object^ sender, System::
 		actualizarMenuPrincipal();
 		mostrarMenuPrincipal();	
 
-		MessageBox::Show(gcnew String(datos.c_str()), "Bienvenido");
+		
 	}
 	else {
 		MessageBox::Show("Correo o contraseña incorrectos.");
@@ -920,12 +1234,8 @@ private: System::Void buttonCerrarsesion_Click(System::Object^ sender, System::E
 	mostrarInicio();
 }
 private: System::Void buttonVerProgreso_Click(System::Object^ sender, System::EventArgs^ e) {
-	string progreso = sistema->obtenerProgresoActual();
-
-	MessageBox::Show(
-		gcnew System::String(progreso.c_str()),
-		"Mi progreso"
-	);
+	actualizarPanelProgreso();
+	mostrarProgreso();
 }
 private: System::Void buttonLeccion1_Click(System::Object^ sender, System::EventArgs^ e) {
 	sistema->iniciarLeccionSaludos();
@@ -969,16 +1279,14 @@ private: System::Void buttonSiguientePregunta_Click(System::Object^ sender, Syst
 
 }
 private: System::Void buttonVerHistorial_Click(System::Object^ sender, System::EventArgs^ e) {
-	string historial = sistema->obtenerHistorialRespuestas();
-
-	MessageBox::Show(
-		gcnew System::String(historial.c_str()),
-		"Historial"
-	);
+	actualizarPanelHistorial();
+	mostrarHistorial();
 
 }
 private: System::Void buttonVerRanking_Click(System::Object^ sender, System::EventArgs^ e) {
-	actualizarPanelRanking();
+	    string ranking = sistema->obtenerRankingUsuarios();
+	    richTextBoxRanking->Text = gcnew System::String(ranking.c_str());
+
 	mostrarRanking();
 
 }
@@ -992,6 +1300,75 @@ private: System::Void buttonVerDiccionario_Click(System::Object^ sender, System:
 
 }
 private: System::Void buttonVolverDiccionario_Click(System::Object^ sender, System::EventArgs^ e) {
+	mostrarMenuPrincipal();
+
+}
+private: System::Void buttonVolverRutaLeccion_Click(System::Object^ sender, System::EventArgs^ e) {
+	mostrarMenuPrincipal();
+
+}
+private: System::Void buttonVerRutaLecciones_Click(System::Object^ sender, System::EventArgs^ e) {
+	actualizarPanelRutaLecciones();
+	mostrarRutaLeccion();
+}
+private: System::Void buttonRankingAVL_Click(System::Object^ sender, System::EventArgs^ e) {
+	labelTituloRanking->Text = L"Ranking AVL";
+
+	    string ranking = sistema->obtenerRankingUsuarios();
+	    richTextBoxRanking->Text = gcnew System::String(ranking.c_str());
+
+}
+private: System::Void buttonRankingQuicksort_Click(System::Object^ sender, System::EventArgs^ e) {
+	labelTituloRanking->Text = L"Ranking QuickSort";
+
+	    string ranking = sistema->obtenerRankingQuickSort();
+	    richTextBoxRanking->Text = gcnew System::String(ranking.c_str());
+
+}
+private: System::Void buttonCargarDataset_Click(System::Object^ sender, System::EventArgs^ e) {
+	string resultado = sistema->cargarDatasetPrueba();
+
+	MessageBox::Show(
+		gcnew System::String(resultado.c_str()),
+		"Dataset"
+	);
+
+	actualizarMenuPrincipal();
+
+}
+private: System::Void buttonLeccion2_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (!sistema->puedeIngresarLeccion(2)) {
+		MessageBox::Show("Necesitas al menos 30 puntos para desbloquear esta leccion.");
+		return;
+	}
+
+	labelTituloPractica->Text = L"Leccion 2: Numeros";
+
+	sistema->iniciarLeccionNumeros();
+
+	mostrarPreguntaActual();
+	mostrarPractica();
+
+}
+private: System::Void buttonLeccion3_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (!sistema->puedeIngresarLeccion(3)) {
+		MessageBox::Show("Necesitas al menos 60 puntos para desbloquear esta leccion.");
+		return;
+	}
+
+	labelTituloPractica->Text = L"Leccion 3: Animales";
+
+	sistema->iniciarLeccionAnimales();
+
+	mostrarPreguntaActual();
+	mostrarPractica();
+
+}
+private: System::Void buttonVolverProgreso_Click(System::Object^ sender, System::EventArgs^ e) {
+	mostrarMenuPrincipal();
+
+}
+private: System::Void buttonVolverHistorial_Click(System::Object^ sender, System::EventArgs^ e) {
 	mostrarMenuPrincipal();
 
 }
