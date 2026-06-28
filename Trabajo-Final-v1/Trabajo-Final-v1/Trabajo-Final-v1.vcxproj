@@ -127,13 +127,20 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arbol.h" />
+    <ClInclude Include="Cola.h" />
     <ClInclude Include="Duolingo.h" />
+    <ClInclude Include="Ejercicio.h" />
+    <ClInclude Include="HashTable.h" />
     <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Palabra.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Pila.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Respuesta.h" />
     <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <ItemGroup>

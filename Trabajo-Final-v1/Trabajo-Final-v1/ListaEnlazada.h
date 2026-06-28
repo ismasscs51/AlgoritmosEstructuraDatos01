@@ -56,6 +56,27 @@ public:
         cantidad++;
     }
 
+    T* insertarYObtener(T dato) {
+        Nodo* nuevo = new Nodo(dato);
+
+        if (cabeza == nullptr) {
+            cabeza = nuevo;
+        }
+        else {
+            Nodo* actual = cabeza;
+
+            while (actual->siguiente != nullptr) {
+                actual = actual->siguiente;
+            }
+
+            actual->siguiente = nuevo;
+        }
+
+        cantidad++;
+
+        return &(nuevo->dato);
+    }
+
     T* buscar(function<bool(T)> criterio) {
         Nodo* actual = cabeza;
 
